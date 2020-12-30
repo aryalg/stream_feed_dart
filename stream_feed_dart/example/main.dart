@@ -16,10 +16,10 @@ main() async {
     Activity(
       actor: 'chris',
       verb: 'add',
-      object: 'picture:10',
-      foreignId: 'picture:10',
+      object: 'picture:11',
+      foreignId: 'picture:11',
       extraData: {
-        'message': 'Beautiful Bird!',
+        'message': 'Beautiful Bird updated!',
       },
     ),
   );
@@ -31,7 +31,7 @@ main() async {
   var activities = await jack.getActivities(limit: 10);
 
   // Remove an Activity by referencing it's foreign_id
-  await chris.removeActivityByForeignId('picture:10');
+  await chris.removeActivityByForeignId('picture:11');
 
   /* -------------------------------------------------------- */
 
@@ -614,7 +614,7 @@ main() async {
     file.path,
     filename: 'my-file',
   );
-  var imageUrl = await client.files.upload(multipartFile);
+  imageUrl = await client.files.upload(multipartFile);
 
   /* -------------------------------------------------------- */
 
@@ -629,7 +629,7 @@ main() async {
   // create a 50x50 thumbnail and crop from center
   await client.images.getCropped(
     'imageUrl',
-    Crop(50, 50, <CropType>[
+    Crop(50, 50, types: <CropType>[
       CropType.center,
     ]),
   );
@@ -637,7 +637,7 @@ main() async {
   // create a 50x50 thumbnail using clipping (keeps aspect ratio)
   await client.images.getResized(
     'imageUrl',
-    Resize(50, 50, ResizeType.clip),
+    Resize(50, 50, type: ResizeType.clip),
   );
 
   /* -------------------------------------------------------- */
