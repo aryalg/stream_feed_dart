@@ -28,11 +28,11 @@ class FeedId extends Equatable {
   String get claim => '$slug$userId';
 
   ///
-  static List<FeedId> fromIds(List<String> ids) =>
+  static List<FeedId> fromIds(List<dynamic> ids) =>
       ids?.map((e) => FeedId.id(e))?.toList(growable: false);
 
   ///
-  static List<String> toIds(List<FeedId> feeds) =>
+  static List<dynamic> toIds(List<FeedId> feeds) =>
       feeds?.map((e) => e.toString())?.toList(growable: false);
 
   @override
