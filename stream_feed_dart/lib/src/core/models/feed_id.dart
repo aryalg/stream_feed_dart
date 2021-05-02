@@ -10,14 +10,11 @@ class FeedId extends Equatable {
 
   ///
   FeedId(this.slug, this.userId)
-      : assert(slug != null, "Feed slug can't be null"),
-        assert(!slug.contains(':'), 'Invalid slug'),
-        assert(userId != null, "Feed userId can't be null"),
+      : assert(!slug.contains(':'), 'Invalid slug'),
         assert(!userId.contains(':'), 'Invalid userId');
 
   ///
   factory FeedId.id(String id) {
-    assert(id != null, "FeedId can't be null");
     assert(id.contains(':'), 'Invalid FeedId');
     final parts = id.split(':');
     assert(parts.length == 2, 'Invalid FeedId');
@@ -28,12 +25,13 @@ class FeedId extends Equatable {
   String get claim => '$slug$userId';
 
   ///
-  static List<FeedId> fromIds(List<dynamic> ids) =>
-      ids?.map((e) => FeedId.id(e))?.toList(growable: false);
+  static List<FeedId>? fromIds(List<dynamic>? ids) =>
+      ids?.map((e) => FeedId.id(e)).toList(growable: false);
 
   ///
-  static List<dynamic> toIds(List<FeedId> feeds) =>
-      feeds?.map((e) => e.toString())?.toList(growable: false);
+  static List<dynamic>? toIds(List<FeedId>? feeds) => feeds!
+      .map((e) => e.toString())
+      .toList(growable: false);
 
   @override
   List<Object> get props => [slug, userId];

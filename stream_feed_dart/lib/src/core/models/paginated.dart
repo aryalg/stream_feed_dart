@@ -9,19 +9,19 @@ part 'paginated.g.dart';
 ///
 class _Paginated<T> extends Equatable {
   ///
-  final String next;
+  final String? next;
 
   ///
-  final List<T> results;
+  final List<T>? results;
 
   ///
-  final String duration;
+  final String? duration;
 
   ///
   const _Paginated(this.next, this.results, this.duration);
 
   @override
-  List<Object> get props => [next, results, duration];
+  List<Object?> get props => [next, results, duration];
 }
 
 ///
@@ -29,11 +29,11 @@ class _Paginated<T> extends Equatable {
 class PaginatedReactions extends _Paginated<Reaction> {
   ///
   const PaginatedReactions(
-      String next, List<Reaction> results, this.activity, String duration)
+      String? next, List<Reaction>? results, this.activity, String? duration)
       : super(next, results, duration);
 
   ///
-  final EnrichedActivity activity;
+  final EnrichedActivity? activity;
 
   ///
   factory PaginatedReactions.fromJson(Map<String, dynamic> json) =>

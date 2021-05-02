@@ -7,37 +7,37 @@ part 'open_graph_data.g.dart';
 @JsonSerializable(createToJson: false)
 class OpenGraphData extends Equatable {
   ///
-  final String title;
+  final String? title;
 
   ///
-  final String type;
+  final String? type;
 
   ///
-  final String url;
+  final String? url;
 
   ///
-  final String site;
+  final String? site;
 
   ///
-  final String siteName;
+  final String? siteName;
 
   ///
-  final String description;
+  final String? description;
 
   ///
-  final String determiner;
+  final String? determiner;
 
   ///
-  final String locale;
+  final String? locale;
 
   ///
-  final List<Image> images;
+  final List<Image>? images;
 
   ///
-  final List<Video> videos;
+  final List<Video>? videos;
 
   ///
-  final List<Audio> audios;
+  final List<Audio>? audios;
 
   ///
   const OpenGraphData({
@@ -55,7 +55,7 @@ class OpenGraphData extends Equatable {
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         title,
         type,
         url,
@@ -78,25 +78,25 @@ class OpenGraphData extends Equatable {
 @JsonSerializable(createToJson: false)
 class Image extends Equatable {
   ///
-  final String image;
+  final String? image;
 
   ///
-  final String url;
+  final String? url;
 
   ///
-  final String secureUrl;
+  final String? secureUrl;
 
   ///
-  final String width;
+  final String? width;
 
   ///
-  final String height;
+  final String? height;
 
   ///
-  final String type;
+  final String? type;
 
   ///
-  final String alt;
+  final String? alt;
 
   ///
   const Image({
@@ -110,7 +110,7 @@ class Image extends Equatable {
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         image,
         url,
         secureUrl,
@@ -128,25 +128,25 @@ class Image extends Equatable {
 @JsonSerializable(createToJson: false)
 class Video extends Equatable {
   ///
-  final String image;
+  final String? image;
 
   ///
-  final String url;
+  final String? url;
 
   ///
-  final String secureUrl;
+  final String? secureUrl;
 
   ///
-  final String width;
+  final String? width;
 
   ///
-  final String height;
+  final String? height;
 
   ///
-  final String type;
+  final String? type;
 
   ///
-  final String alt;
+  final String? alt;
 
   ///
   const Video({
@@ -160,7 +160,7 @@ class Video extends Equatable {
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         image,
         url,
         secureUrl,
@@ -178,16 +178,16 @@ class Video extends Equatable {
 @JsonSerializable(createToJson: false)
 class Audio extends Equatable {
   ///
-  final String audio;
+  final String? audio;
 
   ///
-  final String url;
+  final String? url;
 
   ///
-  final String secureUrl;
+  final String? secureUrl;
 
   ///
-  final String type;
+  final String? type;
 
   ///
   const Audio({
@@ -198,7 +198,7 @@ class Audio extends Equatable {
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         audio,
         url,
         secureUrl,

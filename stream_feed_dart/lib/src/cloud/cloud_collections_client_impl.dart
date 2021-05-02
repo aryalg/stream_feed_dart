@@ -13,8 +13,8 @@ class CloudCollectionsClientImpl implements CloudCollectionsClient {
   Future<CollectionEntry> add(
     String collection,
     Map<String, Object> data, {
-    String entryId,
-    String userId,
+    String? entryId,
+    String? userId,
   }) {
     final entry = CollectionEntry(
       id: entryId,
@@ -37,7 +37,7 @@ class CloudCollectionsClientImpl implements CloudCollectionsClient {
     String collection,
     String entryId,
     Map<String, Object> data, {
-    String userId,
+    String? userId,
   }) {
     final entry = CollectionEntry(
       id: entryId,

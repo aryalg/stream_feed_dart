@@ -5,19 +5,18 @@ author:
 homepage:
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  json_annotation: ^3.1.0
-  equatable: ^1.2.5
-  dio: ^3.0.10
-  jaguar_jwt: ^2.1.6
+  json_annotation: ^4.0.1
+  equatable: ^2.0.0
+  dio: ^4.0.0
+  jaguar_jwt: ^3.0.0
 
 dev_dependencies:
   test: ^1.15.4
-  build_runner: ^1.10.0
-  json_serializable: ^3.5.0
+  build_runner: ^2.0.1
+  json_serializable: ^4.1.1
   pedantic: ^1.9.2
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

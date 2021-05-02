@@ -10,7 +10,7 @@ class CloudFileStorageClientImpl implements CloudFileStorageClient {
   const CloudFileStorageClientImpl(this.token, this.files);
 
   @override
-  Future<String> upload(MultipartFile file) => files.upload(token, file);
+  Future<String?> upload(MultipartFile file) => files.upload(token, file);
 
   @override
   Future<void> delete(String url) => files.delete(token, url);

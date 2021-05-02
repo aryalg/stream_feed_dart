@@ -6,7 +6,7 @@ enum Location {
 }
 
 extension LocationX on Location {
-  String get name => {
+  String? get name => {
         Location.us_east: 'us-east',
         Location.eu_west: 'dublin',
         Location.singapore: 'singapore',

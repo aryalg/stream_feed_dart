@@ -14,8 +14,8 @@ class CollectionsClientImpl implements CollectionsClient {
   Future<CollectionEntry> add(
     String collection,
     Map<String, Object> data, {
-    String entryId,
-    String userId,
+    String? entryId,
+    String? userId,
   }) {
     final token = TokenHelper.buildCollectionsToken(secret, TokenAction.write);
     final entry = CollectionEntry(
@@ -56,7 +56,7 @@ class CollectionsClientImpl implements CollectionsClient {
     String collection,
     String entryId,
     Map<String, Object> data, {
-    String userId,
+    String? userId,
   }) {
     final token = TokenHelper.buildCollectionsToken(secret, TokenAction.write);
     final entry = CollectionEntry(

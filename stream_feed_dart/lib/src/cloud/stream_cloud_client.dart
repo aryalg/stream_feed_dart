@@ -13,7 +13,7 @@ abstract class StreamCloudClient {
   factory StreamCloudClient.connect(
     String apiKey,
     String token, {
-    StreamClientOptions options,
+    StreamClientOptions? options,
   }) =>
       StreamCloudClientImpl(apiKey, token, options: options);
 

@@ -10,7 +10,7 @@ enum TokenAction {
 }
 
 extension TokenActionX on TokenAction {
-  String get action => {
+  String? get action => {
         TokenAction.any: '*',
         TokenAction.read: 'read',
         TokenAction.write: 'write',
@@ -35,7 +35,7 @@ enum TokenResource {
 }
 
 extension TokenResourceX on TokenResource {
-  String get resource => {
+  String? get resource => {
         TokenResource.any: '*',
         TokenResource.activities: 'activities',
         TokenResource.analytics: 'analytics',
@@ -58,7 +58,7 @@ class TokenHelper {
   static Token buildFeedToken(
     String secret,
     TokenAction action, [
-    FeedId feed,
+    FeedId? feed,
   ]) {
     return _buildBackendToken(
         secret, TokenResource.feed, action, feed?.claim ?? '*');
@@ -67,7 +67,7 @@ class TokenHelper {
   static Token buildFollowToken(
     String secret,
     TokenAction action, [
-    FeedId feed,
+    FeedId? feed,
   ]) {
     return _buildBackendToken(
         secret, TokenResource.follower, action, feed?.claim ?? '*');
@@ -97,7 +97,7 @@ class TokenHelper {
   static Token buildToTargetUpdateToken(
     String secret,
     TokenAction action, [
-    FeedId feed,
+    FeedId? feed,
   ]) {
     return _buildBackendToken(
         secret, TokenResource.feed_targets, action, feed?.claim ?? '*');
@@ -110,7 +110,7 @@ class TokenHelper {
   static Token buildFrontendToken(
     String secret,
     String userId, {
-    DateTime expiresAt,
+    DateTime? expiresAt,
   }) {
     final claims = <String, Object>{
       'user_id': userId,
@@ -124,9 +124,9 @@ class TokenHelper {
     TokenResource resource,
     TokenAction action,
     String feedId, {
-    String userId,
+    String? userId,
   }) {
-    final claims = <String, Object>{
+    final claims = <String, Object?>{
       'resource': resource.resource,
       'action': action.action,
       'feed_id': feedId,

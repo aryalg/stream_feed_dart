@@ -10,7 +10,7 @@ class StreamHttpClient implements HttpClient {
   StreamHttpClient(
     this.apiKey, {
     this.options,
-    Dio httpClient,
+    Dio? httpClient,
   }) {
     options ??= const StreamClientOptions();
     _setupDio(httpClient, options);
@@ -21,39 +21,42 @@ class StreamHttpClient implements HttpClient {
   final String apiKey;
 
   /// Your project Stream Chat base url.
-  String get baseURL => options.baseUrl;
+  String get baseURL => options!.baseUrl;
 
   /// Your project Stream Feed clientOptions.
-  StreamClientOptions options;
+  StreamClientOptions? options;
 
-  Duration get receiveTimeout => options.receiveTimeout;
+  Duration get receiveTimeout => options!.receiveTimeout;
 
-  Duration get connectTimeout => options.connectTimeout;
+  Duration get connectTimeout => options!.connectTimeout;
 
-  String get userAgent => options.userAgent;
+  String get userAgent => options!.userAgent;
 
   /// [Dio] httpClient
   /// It's be chosen because it's easy to use and supports interesting features out of the box
   /// (Interceptors, Global configuration, FormData, File downloading etc.)
   @visibleForTesting
-  Dio httpClient;
+  Dio? httpClient;
 
   void _setupDio(
-    Dio httpClient,
-    StreamClientOptions options,
+    Dio? httpClient,
+    StreamClientOptions? options,
   ) {
     this.httpClient = httpClient ?? Dio();
 
     String url;
-    if (!baseURL.startsWith('https') && !baseURL.startsWith('http')) {
+    if (!baseURL.startsWith('https') &&
+        !baseURL.startsWith('http')) {
       url = Uri.https(baseURL, '').toString();
     } else {
       url = baseURL;
     }
-    this.httpClient
+    this.httpClient!
       ..options.baseUrl = url
-      ..options.receiveTimeout = receiveTimeout.inMilliseconds
-      ..options.connectTimeout = connectTimeout.inMilliseconds
+      ..options.receiveTimeout =
+          receiveTimeout.inMilliseconds
+      ..options.connectTimeout =
+          connectTimeout.inMilliseconds
       ..options.queryParameters = {
         'api_key': apiKey,
       }
@@ -70,9 +73,10 @@ class StreamHttpClient implements HttpClient {
   }
 
   Exception _parseError(DioError error) {
-    if (error.type == DioErrorType.RESPONSE) {
+    if (error.type == DioErrorType.response) {
       final apiError = StreamApiException(
-          error.response?.data?.toString(), error.response?.statusCode);
+          error.response?.data?.toString(),
+          error.response?.statusCode);
       return apiError;
     }
     return error;
@@ -82,11 +86,11 @@ class StreamHttpClient implements HttpClient {
   @override
   Future<Response<T>> get<T>(
     String path, {
-    Map<String, dynamic> queryParameters,
-    Map<String, dynamic> headers,
+    Map<String?, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await httpClient.get<T>(
+      final response = await httpClient!.get<T>(
         path,
         queryParameters: queryParameters?.nullProtect,
         options: Options(headers: headers?.nullProtect),
@@ -101,12 +105,12 @@ class StreamHttpClient implements HttpClient {
   @override
   Future<Response<T>> post<T>(
     String path, {
-    Map<String, dynamic> queryParameters,
+    Map<String, dynamic>? queryParameters,
     dynamic data,
-    Map<String, dynamic> headers,
+    Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await httpClient.post<T>(
+      final response = await httpClient!.post<T>(
         path,
         queryParameters: queryParameters?.nullProtect,
         data: data,
@@ -122,11 +126,11 @@ class StreamHttpClient implements HttpClient {
   @override
   Future<Response<T>> delete<T>(
     String path, {
-    Map<String, dynamic> queryParameters,
-    Map<String, dynamic> headers,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await httpClient.delete<T>(
+      final response = await httpClient!.delete<T>(
         path,
         queryParameters: queryParameters?.nullProtect,
         options: Options(headers: headers?.nullProtect),
@@ -141,12 +145,12 @@ class StreamHttpClient implements HttpClient {
   @override
   Future<Response<T>> patch<T>(
     String path, {
-    Map<String, dynamic> queryParameters,
+    Map<String, dynamic>? queryParameters,
     dynamic data,
-    Map<String, dynamic> headers,
+    Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await httpClient.patch<T>(
+      final response = await httpClient!.patch<T>(
         path,
         queryParameters: queryParameters?.nullProtect,
         data: data,
@@ -162,12 +166,12 @@ class StreamHttpClient implements HttpClient {
   @override
   Future<Response<T>> put<T>(
     String path, {
-    Map<String, dynamic> queryParameters,
+    Map<String, dynamic>? queryParameters,
     dynamic data,
-    Map<String, dynamic> headers,
+    Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await httpClient.put<T>(
+      final response = await httpClient!.put<T>(
         path,
         queryParameters: queryParameters?.nullProtect,
         data: data,
@@ -184,8 +188,8 @@ class StreamHttpClient implements HttpClient {
   Future<Response<T>> postFile<T>(
     String path,
     MultipartFile file, {
-    Map<String, dynamic> queryParameters,
-    Map<String, dynamic> headers,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
   }) async {
     try {
       final formData = FormData.fromMap({'file': file});

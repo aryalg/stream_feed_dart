@@ -13,7 +13,7 @@ class CloudUsersClientImpl implements CloudUsersClient {
   Future<User> add(
     String id,
     Map<String, Object> data, {
-    bool getOrCreate,
+    bool? getOrCreate,
   }) =>
       users.add(token, id, data, getOrCreate ?? false);
 
@@ -23,7 +23,7 @@ class CloudUsersClientImpl implements CloudUsersClient {
   @override
   Future<User> get(
     String id, {
-    bool withFollowCounts,
+    bool? withFollowCounts,
   }) =>
       users.get(token, id, withFollowCounts ?? true);
 

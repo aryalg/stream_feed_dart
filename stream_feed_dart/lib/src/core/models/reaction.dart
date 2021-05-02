@@ -11,52 +11,52 @@ part 'reaction.g.dart';
 class Reaction extends Equatable {
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final String id;
+  final String? id;
 
   ///
-  final String kind;
+  final String? kind;
 
   ///
-  final String activityId;
+  final String? activityId;
 
   ///
-  final String userId;
-
-  ///
-  @JsonKey(includeIfNull: false)
-  final String parent;
+  final String? userId;
 
   ///
   @JsonKey(includeIfNull: false)
-  final DateTime createdAt;
+  final String? parent;
+
+  ///
+  @JsonKey(includeIfNull: false)
+  final DateTime? createdAt;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
 
   ///
   @JsonKey(includeIfNull: false, fromJson: FeedId.fromIds, toJson: FeedId.toIds)
-  final List<FeedId> targetFeeds;
+  final List<FeedId>? targetFeeds;
 
   ///
   @JsonKey(includeIfNull: false)
-  final Map<String, Object> user;
+  final Map<String, Object>? user;
 
   ///
   @JsonKey(includeIfNull: false)
-  final Map<String, Object> targetFeedsExtraData;
+  final Map<String, Object>? targetFeedsExtraData;
 
   ///
   @JsonKey(includeIfNull: false)
-  final Map<String, Object> data;
+  final Map<String, Object>? data;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final Map<String, List<Reaction>> latestChildren;
+  final Map<String, List<Reaction>>? latestChildren;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final Map<String, int> childrenCounts;
+  final Map<String, int>? childrenCounts;
 
   /// Known top level fields.
   /// Useful for [Serializer] methods.
@@ -93,19 +93,19 @@ class Reaction extends Equatable {
 
   ///
   Reaction copyWith({
-    String id,
-    String kind,
-    String activityId,
-    String userId,
-    String parent,
-    DateTime createdAt,
-    DateTime updatedAt,
-    List<FeedId> targetFeeds,
-    Map<String, Object> user,
-    Map<String, Object> targetFeedsExtraData,
-    Map<String, Object> data,
-    Map<String, List<Reaction>> latestChildren,
-    Map<String, int> childrenCounts,
+    String? id,
+    String? kind,
+    String? activityId,
+    String? userId,
+    String? parent,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    List<FeedId>? targetFeeds,
+    Map<String, Object>? user,
+    Map<String, Object>? targetFeedsExtraData,
+    Map<String, Object>? data,
+    Map<String, List<Reaction>>? latestChildren,
+    Map<String, int>? childrenCounts,
   }) {
     return Reaction(
       id: id ?? this.id,
@@ -125,7 +125,7 @@ class Reaction extends Equatable {
   }
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         id,
         kind,
         activityId,

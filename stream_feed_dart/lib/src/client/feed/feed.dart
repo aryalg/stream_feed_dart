@@ -41,7 +41,7 @@ class Feed {
 
   Future<void> follow(
     FlatFeet flatFeet, {
-    int activityCopyLimit,
+    int? activityCopyLimit,
   }) {
     final token =
         TokenHelper.buildFollowToken(secret, TokenAction.write, feedId);
@@ -52,9 +52,9 @@ class Feed {
   }
 
   Future<List<Follow>> getFollowers({
-    Iterable<FeedId> feedIds,
-    int limit,
-    int offset,
+    Iterable<FeedId>? feedIds,
+    int? limit,
+    int? offset,
   }) {
     final token =
         TokenHelper.buildFollowToken(secret, TokenAction.read, feedId);
@@ -63,9 +63,9 @@ class Feed {
   }
 
   Future<List<Follow>> getFollowed({
-    Iterable<FeedId> feedIds,
-    int limit,
-    int offset,
+    Iterable<FeedId>? feedIds,
+    int? limit,
+    int? offset,
   }) {
     final token =
         TokenHelper.buildFollowToken(secret, TokenAction.read, feedId);
@@ -75,7 +75,7 @@ class Feed {
 
   Future<void> unfollow(
     FlatFeet flatFeet, {
-    bool keepHistory,
+    bool? keepHistory,
   }) {
     final token =
         TokenHelper.buildFollowToken(secret, TokenAction.delete, feedId);

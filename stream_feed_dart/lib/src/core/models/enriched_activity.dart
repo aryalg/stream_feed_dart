@@ -8,23 +8,23 @@ part 'enriched_activity.g.dart';
 ///
 class EnrichableField extends Equatable {
   ///
-  final Object data;
+  final Object? data;
 
   ///
   const EnrichableField(this.data);
 
   ///
-  static EnrichableField deserialize(Object obj) {
+  static EnrichableField deserialize(Object? obj) {
     if (obj is String) {
       return EnrichableField(obj);
     }
-    return EnrichableField(obj as Map<String, Object>);
+    return EnrichableField(obj as Map<String, Object>?);
   }
 
-  static Object serialize(EnrichableField field) => field.data;
+  static Object? serialize(EnrichableField field) => field.data;
 
   @override
-  List<Object> get props => [data];
+  List<Object?> get props => [data];
 }
 
 ///
@@ -32,28 +32,28 @@ class EnrichableField extends Equatable {
 class EnrichedActivity extends Equatable {
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final String id;
+  final String? id;
 
   ///
   @JsonKey(
     fromJson: EnrichableField.deserialize,
     toJson: EnrichableField.serialize,
   )
-  final EnrichableField actor;
+  final EnrichableField? actor;
 
   ///
-  final String verb;
+  final String? verb;
 
   ///
   @JsonKey(
     fromJson: EnrichableField.deserialize,
     toJson: EnrichableField.serialize,
   )
-  final EnrichableField object;
+  final EnrichableField? object;
 
   ///
   @JsonKey(includeIfNull: false)
-  final String foreignId;
+  final String? foreignId;
 
   ///
   @JsonKey(
@@ -61,11 +61,11 @@ class EnrichedActivity extends Equatable {
     fromJson: EnrichableField.deserialize,
     toJson: Serializer.readOnly,
   )
-  final EnrichableField target;
+  final EnrichableField? target;
 
   ///
   @JsonKey(includeIfNull: false)
-  final DateTime time;
+  final DateTime? time;
 
   ///
   @JsonKey(
@@ -73,39 +73,39 @@ class EnrichedActivity extends Equatable {
     fromJson: EnrichableField.deserialize,
     toJson: Serializer.readOnly,
   )
-  final EnrichableField origin;
+  final EnrichableField? origin;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final List<String> to;
+  final List<String>? to;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final double score;
+  final double? score;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final Map<String, Object> analytics;
+  final Map<String, Object>? analytics;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final Map<String, Object> extraContext;
+  final Map<String, Object>? extraContext;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final Map<String, Object> reactionCounts;
+  final Map<String, Object>? reactionCounts;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final Map<String, List<Reaction>> ownReactions;
+  final Map<String, List<Reaction>>? ownReactions;
 
   ///
   @JsonKey(includeIfNull: false, toJson: Serializer.readOnly)
-  final Map<String, List<Reaction>> latestReactions;
+  final Map<String, List<Reaction>>? latestReactions;
 
   /// Map of custom user extraData
   @JsonKey(includeIfNull: false)
-  final Map<String, Object> extraData;
+  final Map<String, Object>? extraData;
 
   /// Known top level fields.
   /// Useful for [Serializer] methods.
@@ -148,7 +148,7 @@ class EnrichedActivity extends Equatable {
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         actor,
         object,
         verb,
@@ -168,9 +168,9 @@ class EnrichedActivity extends Equatable {
       ];
 
   /// Create a new instance from a json
-  factory EnrichedActivity.fromJson(Map<String, dynamic> json) =>
+  factory EnrichedActivity.fromJson(Map<String, dynamic>? json) =>
       _$EnrichedActivityFromJson(
-          Serializer.moveKeysToRoot(json, topLevelFields));
+          Serializer.moveKeysToRoot(json, topLevelFields)!);
 
   /// Serialize to json
   Map<String, dynamic> toJson() => Serializer.moveKeysToMapInPlace(

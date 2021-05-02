@@ -11,7 +11,7 @@ class FileStorageClientImpl implements FileStorageClient {
   const FileStorageClientImpl(this.secret, this.files);
 
   @override
-  Future<String> upload(MultipartFile file) {
+  Future<String?> upload(MultipartFile file) {
     final token = TokenHelper.buildFilesToken(secret, TokenAction.write);
     return files.upload(token, file);
   }

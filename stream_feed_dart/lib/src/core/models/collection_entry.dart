@@ -7,22 +7,22 @@ part 'collection_entry.g.dart';
 @JsonSerializable()
 class CollectionEntry extends Equatable {
   ///
-  final String id;
+  final String? id;
 
   ///
-  final String collection;
+  final String? collection;
 
   ///
-  final String foreignId;
+  final String? foreignId;
 
   ///
-  final Map<String, Object> data;
+  final Map<String, Object>? data;
 
   ///
-  final DateTime createdAt;
+  final DateTime? createdAt;
 
   ///
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
 
   ///
   const CollectionEntry({
@@ -35,7 +35,7 @@ class CollectionEntry extends Equatable {
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         id,
         collection,
         foreignId,
@@ -45,12 +45,12 @@ class CollectionEntry extends Equatable {
       ];
 
   CollectionEntry copyWith({
-    String id,
-    String collection,
-    String foreignId,
-    Map<String, Object> data,
-    DateTime createdAt,
-    DateTime updatedAt,
+    String? id,
+    String? collection,
+    String? foreignId,
+    Map<String, Object>? data,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) {
     return CollectionEntry(
       id: id ?? this.id,

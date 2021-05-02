@@ -27,9 +27,10 @@ class StreamApiImpl implements StreamApi {
 
   StreamApiImpl(
     String apiKey, {
-    StreamClientOptions options,
-    HttpClient client,
-  }) : _client = client ?? StreamHttpClient(apiKey, options: options);
+    StreamClientOptions? options,
+    HttpClient? client,
+  }) : _client = client ??
+            StreamHttpClient(apiKey, options: options);
 
   @override
   BatchApi get batch => BatchApiImpl(_client);
@@ -41,7 +42,8 @@ class StreamApiImpl implements StreamApi {
   UsersApi get users => UsersApiImpl(_client);
 
   @override
-  CollectionsApi get collections => CollectionsApiImpl(_client);
+  CollectionsApi get collections =>
+      CollectionsApiImpl(_client);
 
   @override
   FeedApi get feed => FeedApiImpl(_client);
@@ -53,14 +55,17 @@ class StreamApiImpl implements StreamApi {
   ImagesApi get images => ImagesApiImpl(_client);
 
   @override
-  Future<OpenGraphData> openGraph(Token token, String targetUrl) async {
+  Future<OpenGraphData> openGraph(
+      Token token, String targetUrl) async {
     checkNotNull(targetUrl, "TargetUrl can't be null");
-    checkArgument(targetUrl.isNotEmpty, "TargetUrl can't be empty");
+    checkArgument(
+        targetUrl.isNotEmpty, "TargetUrl can't be empty");
     final result = await _client.get(
       Routes.openGraphUrl,
       headers: {'Authorization': '$token'},
       queryParameters: {'url': targetUrl},
     );
     print(result);
+    return Future.value(null);
   }
 }
