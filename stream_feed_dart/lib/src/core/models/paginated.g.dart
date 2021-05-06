@@ -8,19 +8,15 @@ part of 'paginated.dart';
 
 PaginatedReactions _$PaginatedReactionsFromJson(Map json) {
   return PaginatedReactions(
-    json['next'] as String,
-    (json['results'] as List)
-        ?.map((e) => e == null
-            ? null
-            : Reaction.fromJson((e as Map)?.map(
-                (k, e) => MapEntry(k as String, e),
-              )))
-        ?.toList(),
+    json['next'] as String?,
+    (json['results'] as List<dynamic>?)
+        ?.map((e) => Reaction.fromJson(Map<String, dynamic>.from(e as Map)))
+        .toList(),
     json['activity'] == null
         ? null
-        : EnrichedActivity.fromJson((json['activity'] as Map)?.map(
+        : EnrichedActivity.fromJson((json['activity'] as Map?)?.map(
             (k, e) => MapEntry(k as String, e),
           )),
-    json['duration'] as String,
+    json['duration'] as String?,
   );
 }
