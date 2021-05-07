@@ -99,11 +99,13 @@ class Activity extends Equatable {
 
   /// Create a new instance from a json
   factory Activity.fromJson(Map<String, dynamic>? json) =>
-      _$ActivityFromJson(Serializer.moveKeysToRoot(json, topLevelFields)!);
+      _$ActivityFromJson(
+          Serializer.moveKeysToRoot(json, topLevelFields)!);
 
   /// Serialize to json
   Map<String, dynamic> toJson() =>
-      Serializer.moveKeysToMapInPlace(_$ActivityToJson(this), topLevelFields);
+      Serializer.moveKeysToMapInPlace(
+          _$ActivityToJson(this), topLevelFields);
 
   ///
   Activity copyWith({

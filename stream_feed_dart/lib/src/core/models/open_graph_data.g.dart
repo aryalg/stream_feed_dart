@@ -17,13 +17,19 @@ OpenGraphData _$OpenGraphDataFromJson(Map json) {
     determiner: json['determiner'] as String?,
     locale: json['locale'] as String?,
     images: (json['images'] as List<dynamic>?)
-        ?.map((e) => Image.fromJson(Map<String, dynamic>.from(e as Map)))
+        ?.map((e) => Image.fromJson((e as Map?)?.map(
+              (k, e) => MapEntry(k as String, e),
+            )))
         .toList(),
     videos: (json['videos'] as List<dynamic>?)
-        ?.map((e) => Video.fromJson(Map<String, dynamic>.from(e as Map)))
+        ?.map((e) => Video.fromJson((e as Map?)?.map(
+              (k, e) => MapEntry(k as String, e),
+            )))
         .toList(),
     audios: (json['audios'] as List<dynamic>?)
-        ?.map((e) => Audio.fromJson(Map<String, dynamic>.from(e as Map)))
+        ?.map((e) => Audio.fromJson((e as Map?)?.map(
+              (k, e) => MapEntry(k as String, e),
+            )))
         .toList(),
   );
 }

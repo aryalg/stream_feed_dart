@@ -70,8 +70,9 @@ class OpenGraphData extends Equatable {
       ];
 
   /// Create a new instance from a json
-  factory OpenGraphData.fromJson(Map<String, dynamic> json) =>
-      _$OpenGraphDataFromJson(json);
+  factory OpenGraphData.fromJson(
+          Map<String, dynamic>? json) =>
+      _$OpenGraphDataFromJson(json!);
 }
 
 ///
@@ -121,7 +122,8 @@ class Image extends Equatable {
       ];
 
   /// Create a new instance from a json
-  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
+  factory Image.fromJson(Map<String, dynamic>? json) =>
+      _$ImageFromJson(json!);
 }
 
 ///
@@ -171,7 +173,8 @@ class Video extends Equatable {
       ];
 
   /// Create a new instance from a json
-  factory Video.fromJson(Map<String, dynamic> json) => _$VideoFromJson(json);
+  factory Video.fromJson(Map<String, dynamic>? json) =>
+      _$VideoFromJson(json!);
 }
 
 ///
@@ -206,5 +209,6 @@ class Audio extends Equatable {
       ];
 
   /// Create a new instance from a json
-  factory Audio.fromJson(Map<String, dynamic> json) => _$AudioFromJson(json);
+  factory Audio.fromJson(Map<String, dynamic>? json) =>
+      _$AudioFromJson(json!);
 }

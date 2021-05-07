@@ -5,7 +5,8 @@ import 'package:stream_feed_dart/src/core/models/activity.dart';
 part 'group.g.dart';
 
 ///
-@JsonSerializable(createToJson: false, genericArgumentFactories: true)
+@JsonSerializable(
+    createToJson: false, genericArgumentFactories: true)
 class Group<T> extends Equatable {
   ///
   final String? id;
@@ -38,7 +39,7 @@ class Group<T> extends Equatable {
   /// Create a new instance from a json
   factory Group.fromJson(
     Map<String, dynamic> json,
-    T Function(Object json) fromJsonT,
+    T Function(Object? json) fromJsonT,
   ) =>
       _$GroupFromJson(json, fromJsonT);
 
@@ -84,7 +85,7 @@ class NotificationGroup<T> extends Group<T> {
   /// Create a new instance from a json
   factory NotificationGroup.fromJson(
     Map<String, dynamic> json,
-    T Function(Object json) fromJsonT,
+    T Function(Object? json) fromJsonT,
   ) =>
       _$NotificationGroupFromJson(json, fromJsonT);
 

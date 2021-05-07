@@ -21,8 +21,8 @@ class EnrichableField extends Equatable {
     return EnrichableField(obj as Map<String, Object>?);
   }
 
-  static Object? serialize(EnrichableField field) =>
-      field.data;
+  static Object? serialize(EnrichableField? field) =>
+      field!.data;
 
   @override
   List<Object?> get props => [data];
@@ -41,7 +41,7 @@ class EnrichedActivity extends Equatable {
     fromJson: EnrichableField.deserialize,
     toJson: EnrichableField.serialize,
   )
-  final EnrichableField actor;
+  final EnrichableField? actor;
 
   ///
   final String? verb;
@@ -51,7 +51,7 @@ class EnrichedActivity extends Equatable {
     fromJson: EnrichableField.deserialize,
     toJson: EnrichableField.serialize,
   )
-  final EnrichableField object;
+  final EnrichableField? object;
 
   ///
   @JsonKey(includeIfNull: false)
